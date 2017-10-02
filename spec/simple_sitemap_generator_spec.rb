@@ -1,6 +1,12 @@
 require 'spec_helper'
 
 RSpec.describe SimpleSitemapGenerator do
+  before do
+    SimpleSitemapGenerator::Sitemap.additional_paths = [
+      '/users'
+    ]
+  end
+
   it 'has a version number' do
     expect(SimpleSitemapGenerator::VERSION).not_to be nil
   end
@@ -11,6 +17,11 @@ RSpec.describe SimpleSitemapGenerator do
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>/</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>/users</loc>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>

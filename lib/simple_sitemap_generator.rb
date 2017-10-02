@@ -2,7 +2,7 @@ module SimpleSitemapGenerator
   VERSION = '0.1.0'.freeze
 
   class Generator
-    attr_accessor :host, :default_lastmod, :default_changefreq, :default_priority, :inappropriate_paths, :options
+    attr_accessor :host, :default_lastmod, :default_changefreq, :default_priority, :inappropriate_paths, :options, :additional_paths
 
     def generate_xml
       paths.map { |path| {
@@ -25,6 +25,7 @@ module SimpleSitemapGenerator
       ]
       @host = ''
       @options = {}
+      @additional_paths = []
     end
 
     private
@@ -42,11 +43,12 @@ module SimpleSitemapGenerator
     end
 
     def paths
-      routes.select{ |route| route.verb == 'GET' }
+      paths = routes.select{ |route| route.verb == 'GET' }
         .reject{ |route| redirect_path?(route) }
         .map { |route| route.path.spec.to_s.gsub('(.:format)', '') }
         .reject{ |path| inappropriate_path?(path) }
         .uniq
+      paths + additional_paths
     end
 
     def redirect_path?(route)

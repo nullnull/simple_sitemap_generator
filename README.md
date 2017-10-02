@@ -50,6 +50,14 @@ SimpleSitemapGenerator::Sitemap.default_lastmod = Time.current
 SimpleSitemapGenerator::Sitemap.default_priority = 0.5
 SimpleSitemapGenerator::Sitemap.default_changefreq = 'daily'
 
+# [optional] Set additional_paths
+# NOTE: Output includes only static url (eg. '/users'), does not include dynamic url (eg. '/users/123').
+#       You should specify url if you want.
+SimpleSitemapGenerator::Sitemap.additional_paths = [
+  '/users/123',
+  *Article.published.map{ |a| "/articles/#{a.id}"},
+]
+
 # [optional] Set inappropriate paths for sitemap.xml by regular expression
 SimpleSitemapGenerator::Sitemap.inappropriate_paths += [
   /^\/admin/,
