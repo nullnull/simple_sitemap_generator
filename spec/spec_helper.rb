@@ -13,6 +13,10 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 
+  class DispatcherMock
+    attr_reader :app
+  end
+
   class PathMock
     attr_reader :path
 
@@ -26,11 +30,12 @@ RSpec.configure do |config|
   end
 
   class RouteMock
-    attr_reader :verb, :path
+    attr_reader :verb, :path, :app
 
     def initialize(verb, path)
       @verb = verb
       @path = PathMock.new(path)
+      @app = DispatcherMock.new
     end
   end
 

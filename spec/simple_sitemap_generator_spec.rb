@@ -8,7 +8,7 @@ RSpec.describe SimpleSitemapGenerator do
   it 'works' do
     xml = <<~EOT
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset hoge:hoge>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>/</loc>
     <changefreq>daily</changefreq>
