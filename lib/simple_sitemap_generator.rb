@@ -1,5 +1,5 @@
 module SimpleSitemapGenerator
-  VERSION = '0.1.0'.freeze
+  VERSION = '0.2.0'.freeze
 
   class Generator
     attr_accessor :host, :default_lastmod, :default_changefreq, :default_priority, :inappropriate_paths, :options, :additional_paths
