@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.name          = 'simple_sitemap_generator'
   spec.version       = SimpleSitemapGenerator::VERSION
   spec.authors       = ['Katsuma Narisawa']
-  spec.email         = ['face.the.music721@gmail.com']
+  spec.email         = ['katsuma.narisawa@gmail.com']
 
   spec.summary       = 'Generates sitemap.xml automatically by using config/routes.rb'
   spec.homepage      = 'https://github.com/nullnull/simple_sitemap_generator'
